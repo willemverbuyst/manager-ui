@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "es2015",
+    "lib": ["ES2015", "DOM"],
+    "outdir": "./dist",
+    "rootDir": "./src ",
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true
+  }
+}
