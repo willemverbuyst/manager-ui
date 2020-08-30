@@ -1,5 +1,6 @@
 import { BaseController } from './BaseController';
 import { LoginService } from '../services/LoginService';
+import { LinkTextValue } from './Decorators';
 
 export class LoginController extends BaseController {
   private loginService = new LoginService();
@@ -14,7 +15,7 @@ export class LoginController extends BaseController {
 
   private loginButton = this.createElement('button', 'Login', async () => {
     if (this.userNameInput.value && this.passwordInput.value) {
-      this.resetErrorLabel();
+      this.errorLabelText = '';
       const result = await this.loginService.login(
         this.userNameInput.value,
         this.passwordInput.value
@@ -22,10 +23,10 @@ export class LoginController extends BaseController {
       if (result) {
         this.router.switchToDashboardView(result);
       } else {
-        this.showErrorLabel('Wrong username or password!');
+        this.errorLabelText = 'Wrong username or password!';
       }
     } else {
-      this.showErrorLabel('Please fill in both fields!');
+      this.errorLabelText = 'Please fill in both fields!';
     }
   });
 
@@ -33,19 +34,23 @@ export class LoginController extends BaseController {
 
   private errorLabel = this.createElement('label');
 
-  private resetErrorLabel() {
-    this.errorLabel.style.color = 'red';
-    this.errorLabel.style.visibility = 'hidden';
-  }
+  @LinkTextValue('errorLabel')
+  private errorLabelText: string = '';
 
-  private showErrorLabel(errorMessage: string) {
-    this.errorLabel.innerText = errorMessage;
-    this.errorLabel.style.visibility = 'visible';
-  }
+  // private resetErrorLabel() {
+  //   this.errorLabel.style.color = 'red';
+  //   this.errorLabel.style.visibility = 'hidden';
+  // }
+
+  // private showErrorLabel(errorMessage: string) {
+  //   this.errorLabel.innerText = errorMessage;
+  //   this.errorLabel.style.visibility = 'visible';
+  // }
 
   public createView(): HTMLDivElement {
+    this.errorLabel.id = 'errorLabel';
+    this.errorLabel.style.color = 'red';
     this.passwordInput.type = 'Password';
-    this.resetErrorLabel();
 
     return this.container;
   }
