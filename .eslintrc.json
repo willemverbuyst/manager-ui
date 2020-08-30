@@ -1,0 +1,18 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["airbnb-typescript"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+  // "overrides": [
+  //   {
+  //     "files": ["*.ts"],
+  //     "rules": {
+  //       "@typescript-eslint/explicit-module-boundary-types": "off",
+  //       "@typescript-eslint/no-non-null-assertion": "off"
+  //     }
+  //   }
+  // ]
+}

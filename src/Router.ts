@@ -6,7 +6,7 @@ import { DashboardController } from './controllers/DashboardController';
 export class Router {
   private mainElement = document.getElementById('main-container');
 
-  public handleRequest() {
+  public handleRequest(): void {
     console.log('Handling request for ' + this.getRoute());
 
     switch (this.getRoute()) {
@@ -28,7 +28,7 @@ export class Router {
     }
   }
 
-  public switchToDashboardView(sessionToken: SessionToken | undefined) {
+  public switchToDashboardView(sessionToken: SessionToken | undefined): void {
     if (this.mainElement) {
       this.mainElement.innerHTML = '';
       const dashboardController: DashboardController = new DashboardController(
@@ -41,7 +41,7 @@ export class Router {
     }
   }
 
-  public switchToLoginView() {
+  public switchToLoginView(): void {
     if (this.mainElement) {
       this.mainElement.innerHTML = '';
       const loginController: LoginController = new LoginController(this);

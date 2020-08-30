@@ -35,7 +35,7 @@ export class LoginController extends BaseController {
   private errorLabel = this.createElement('label');
 
   @LinkTextValue('errorLabel')
-  private errorLabelText: string = '';
+  private errorLabelText = '';
 
   // private resetErrorLabel() {
   //   this.errorLabel.style.color = 'red';
